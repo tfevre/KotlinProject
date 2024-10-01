@@ -7,6 +7,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+
 
 @Composable
 fun QRScannerScreen(navController: NavController) {
@@ -16,7 +19,10 @@ fun QRScannerScreen(navController: NavController) {
                 title = { Text("Scan QR Code") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        // TODO: Add back icon
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
                     }
                 }
             )

@@ -4,9 +4,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -30,7 +32,6 @@ fun EventsListScreen(navController: NavController) {
                 title = { Text("My NFT Events") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        // Add back icon here
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = "Back"
@@ -38,7 +39,20 @@ fun EventsListScreen(navController: NavController) {
                     }
                 }
             )
-        }
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { navController.navigate("qr-scanner") },
+                shape = CircleShape,
+                backgroundColor = MaterialTheme.colors.primary
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.AddCircle,
+                    contentDescription = "Scan QR Code"
+                )
+            }
+        },
+        floatingActionButtonPosition = FabPosition.Center
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
             items(events) { event ->
